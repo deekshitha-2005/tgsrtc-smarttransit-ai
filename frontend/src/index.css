@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+
+:root {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0b0f19;
+  color: #f3f4f6;
+  overflow: hidden;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* Leaflet Map Premium Styling */
+.leaflet-container {
+  background: #0f172a !important;
+  border-radius: 0.75rem;
+}
+
+/* CartoDB dark tiles are natively dark — no filter needed */
+.dark-map .leaflet-tile-container img {
+  filter: none;
+}
+
+/* Leaflet fullscreen map sits above everything */
+.leaflet-container.leaflet-fullscreen {
+  position: fixed !important;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 9999;
+  border-radius: 0 !important;
+}
+
+/* GeoJSON boundary path */
+.leaflet-interactive.hyd-boundary {
+  pointer-events: none;
+}
+
+/* Map search dropdown backdrop */
+.map-search-results {
+  animation: dropIn 0.15s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.leaflet-bar {
+  border: none !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+}
+
+.leaflet-bar a {
+  background-color: #1e293b !important;
+  color: #94a3b8 !important;
+  border-bottom: 1px solid #334155 !important;
+}
+
+.leaflet-bar a:hover {
+  background-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3) !important;
+  border: 1px solid #334155;
+  padding: 4px !important;
+}
+
+.leaflet-popup-content {
+  margin: 8px 12px !important;
+}
+
+.leaflet-popup-tip {
+  background-color: #1e293b !important;
+}
+
+/* Pulsing markers for active alerts or emergencies */
+@keyframes pulse-ring {
+  0% { transform: scale(0.4); opacity: 1; }
+  80%, 100% { opacity: 0; transform: scale(1.3); }
+}
+
+.pulse-alert {
+  position: relative;
+}
+.pulse-alert::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: -8px;
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+  border-radius: 50%;
+  border: 3px solid #ef4444;
+  animation: pulse-ring 1.5s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+}
+
+.glass-panel {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Smooth animated bus marker movement ── */
+/* Leaflet moves the marker's parent div — we add a transition to it */
+.custom-bus-marker {
+  transition: left 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+              top  0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: left, top;
+}
+
+/* Arrow wrapper rotates to bearing direction */
+.animated-bus-wrapper {
+  transition: transform 0.4s ease;
+}
+
+/* Real-time popup dark style */
+.rt-popup .leaflet-popup-content-wrapper {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border-radius: 0.875rem !important;
+  box-shadow: 0 20px 40px rgb(0 0 0 / 0.5) !important;
+  border: 1px solid #334155;
+  padding: 4px !important;
+}
+.rt-popup .leaflet-popup-tip {
+  background-color: #1e293b !important;
+}
+.rt-popup .leaflet-popup-content {
+  margin: 8px 12px !important;
+  min-width: 200px;
+}
